@@ -37,7 +37,7 @@ class NavigationBar extends Component{
       return(
         <Styles>
             <Navbar expand="lg">
-                <Navbar.Brand href="/">
+                <Navbar.Brand href="/hubble">
                   <Row>
                      <img src={HubbleLogo} width="30" height="30" className="d-inline-block align-top" style={{marginLeft:"20px"}} alt="React Bootstrap logo"/>
                      <h1 className="titleText"> Hubble! </h1>
@@ -48,22 +48,22 @@ class NavigationBar extends Component{
                   <Nav className="ml-auto">
                     <Nav.Item>
                       <Nav.Link>
-                        <Link className="navButton" to="/"> <span className="navText"> Home </span> </Link>
+                        <Link className="navButton" to="/hubble"> <span className="navText"> Homers </span> </Link>
                       </Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
                       <Nav.Link>
-                        <Link className="navButton" to="/dailypic"> <span className="navText"> Daily Pic </span> </Link>
+                        <Link className="navButton" to="/hubble/dailypic"> <span className="navText"> Daily Pic </span> </Link>
                       </Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
                       <Nav.Link>
-                        <Link className="navButton" to="/mars"> <span className="navText"> Mars </span> </Link>
+                        <Link className="navButton" to="/hubble/mars"> <span className="navText"> Mars </span> </Link>
                       </Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
                       <Nav.Link>
-                        <Link className="navButton" to="/naturalevents"> <span className="navText"> Natural Events </span> </Link>
+                        <Link className="navButton" to="/hubble/naturalevents"> <span className="navText"> Natural Events </span> </Link>
                       </Nav.Link>
                     </Nav.Item>
                   </Nav>

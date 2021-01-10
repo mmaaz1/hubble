@@ -45,10 +45,10 @@ class App extends Component {
         <Jumbotron jumboColor={this.state.jumboColor} jumboHeader={this.state.jumboHeader} jumboText={this.state.jumboText}/>
         <div className="websiteBackground">
             <Switch>
-             <Route exact path="/" render={(props) => (<Home {...props} onChangePage={this.handlePageChange} />)}/>
-             <Route path="/dailypic" render={(props) => (<DailyPic {...props} onChangePage={this.handlePageChange} />)}/>
-             <Route path="/mars" render={(props) => (<Mars {...props} onChangePage={this.handlePageChange} />)}/>
-             <Route path="/naturalevents" render={(props) => (<NaturalEvents {...props} onChangePage={this.handlePageChange} />)}/>
+             <Route exact path="/hubble" render={(props) => (<Home {...props} onChangePage={this.handlePageChange} />)}/>
+             <Route path="/hubble/dailypic" render={(props) => (<DailyPic {...props} onChangePage={this.handlePageChange} />)}/>
+             <Route path="/hubble/mars" render={(props) => (<Mars {...props} onChangePage={this.handlePageChange} />)}/>
+             <Route path="/hubble/naturalevents" render={(props) => (<NaturalEvents {...props} onChangePage={this.handlePageChange} />)}/>
              <Route component={NoMatch}/>
             </Switch>
         </div>
