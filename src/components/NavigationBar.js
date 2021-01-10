@@ -48,7 +48,7 @@ class NavigationBar extends Component{
                   <Nav className="ml-auto">
                     <Nav.Item>
                       <Nav.Link>
-                        <Link className="navButton" to="/hubble"> <span className="navText"> Homers </span> </Link>
+                        <Link className="navButton" to="/hubble"> <span className="navText"> Home </span> </Link>
                       </Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
