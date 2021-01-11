@@ -1,15 +1,13 @@
 {
   "files": {
-    "main.css": "/hubble/static/css/main.f3b21dc4.chunk.css",
-    "main.js": "/hubble/static/js/main.7aa546f0.chunk.js",
-    "main.js.map": "/hubble/static/js/main.7aa546f0.chunk.js.map",
+    "main.js": "/hubble/static/js/main.9293f3a7.chunk.js",
+    "main.js.map": "/hubble/static/js/main.9293f3a7.chunk.js.map",
     "runtime-main.js": "/hubble/static/js/runtime-main.d985f3eb.js",
     "runtime-main.js.map": "/hubble/static/js/runtime-main.d985f3eb.js.map",
-    "static/js/2.fcf5171f.chunk.js": "/hubble/static/js/2.fcf5171f.chunk.js",
-    "static/js/2.fcf5171f.chunk.js.map": "/hubble/static/js/2.fcf5171f.chunk.js.map",
+    "static/js/2.bc08df01.chunk.js": "/hubble/static/js/2.bc08df01.chunk.js",
+    "static/js/2.bc08df01.chunk.js.map": "/hubble/static/js/2.bc08df01.chunk.js.map",
     "index.html": "/hubble/index.html",
-    "static/css/main.f3b21dc4.chunk.css.map": "/hubble/static/css/main.f3b21dc4.chunk.css.map",
-    "static/js/2.fcf5171f.chunk.js.LICENSE.txt": "/hubble/static/js/2.fcf5171f.chunk.js.LICENSE.txt",
+    "static/js/2.bc08df01.chunk.js.LICENSE.txt": "/hubble/static/js/2.bc08df01.chunk.js.LICENSE.txt",
     "static/media/Curiosity.a2164041.jpg": "/hubble/static/media/Curiosity.a2164041.jpg",
     "static/media/Error.c3180f5b.png": "/hubble/static/media/Error.c3180f5b.png",
     "static/media/ErrorMars.cc98dbf9.png": "/hubble/static/media/ErrorMars.cc98dbf9.png",
@@ -19,7 +17,6 @@
     "static/media/greenBackground.510d04c2.jpg": "/hubble/static/media/greenBackground.510d04c2.jpg",
     "static/media/homeDailyPics.73295adc.jpg": "/hubble/static/media/homeDailyPics.73295adc.jpg",
     "static/media/homeMars.93a51d69.jpg": "/hubble/static/media/homeMars.93a51d69.jpg",
-    "static/media/homeMilkyWay.eeae4604.jpg": "/hubble/static/media/homeMilkyWay.eeae4604.jpg",
     "static/media/homeNaturalEvents.ce9ad7f6.jpg": "/hubble/static/media/homeNaturalEvents.ce9ad7f6.jpg",
     "static/media/homeTitleBackground.25458bce.png": "/hubble/static/media/homeTitleBackground.25458bce.png",
     "static/media/jumboDaily.f736dacb.jpg": "/hubble/static/media/jumboDaily.f736dacb.jpg",
@@ -30,8 +27,7 @@
   },
   "entrypoints": [
     "static/js/runtime-main.d985f3eb.js",
-    "static/js/2.fcf5171f.chunk.js",
-    "static/css/main.f3b21dc4.chunk.css",
-    "static/js/main.7aa546f0.chunk.js"
+    "static/js/2.bc08df01.chunk.js",
+    "static/js/main.9293f3a7.chunk.js"
   ]
 }
