@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/hubble/static/js/main.1118bf27.chunk.js",
-    "main.js.map": "/hubble/static/js/main.1118bf27.chunk.js.map",
+    "main.js": "/hubble/static/js/main.320c38d7.chunk.js",
+    "main.js.map": "/hubble/static/js/main.320c38d7.chunk.js.map",
     "runtime-main.js": "/hubble/static/js/runtime-main.d985f3eb.js",
     "runtime-main.js.map": "/hubble/static/js/runtime-main.d985f3eb.js.map",
     "static/js/2.663fc626.chunk.js": "/hubble/static/js/2.663fc626.chunk.js",
@@ -29,6 +29,6 @@
   "entrypoints": [
     "static/js/runtime-main.d985f3eb.js",
     "static/js/2.663fc626.chunk.js",
-    "static/js/main.1118bf27.chunk.js"
+    "static/js/main.320c38d7.chunk.js"
   ]
 }
