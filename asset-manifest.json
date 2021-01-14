@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/hubble/static/js/main.b9645c16.chunk.js",
-    "main.js.map": "/hubble/static/js/main.b9645c16.chunk.js.map",
+    "main.js": "/hubble/static/js/main.fae7ea53.chunk.js",
+    "main.js.map": "/hubble/static/js/main.fae7ea53.chunk.js.map",
     "runtime-main.js": "/hubble/static/js/runtime-main.d985f3eb.js",
     "runtime-main.js.map": "/hubble/static/js/runtime-main.d985f3eb.js.map",
     "static/css/2.67243139.chunk.css": "/hubble/static/css/2.67243139.chunk.css",
@@ -17,12 +17,18 @@
     "static/media/blackBackground.ca95b0b7.jpg": "/hubble/static/media/blackBackground.ca95b0b7.jpg",
     "static/media/brownBackground.27328613.jpg": "/hubble/static/media/brownBackground.27328613.jpg",
     "static/media/greenBackground.510d04c2.jpg": "/hubble/static/media/greenBackground.510d04c2.jpg",
-    "static/media/homeDailyPics.73295adc.jpg": "/hubble/static/media/homeDailyPics.73295adc.jpg",
-    "static/media/homeMars.93a51d69.jpg": "/hubble/static/media/homeMars.93a51d69.jpg",
-    "static/media/homeNaturalEvents.ce9ad7f6.jpg": "/hubble/static/media/homeNaturalEvents.ce9ad7f6.jpg",
+    "static/media/homeDailyOne.03168638.jpg": "/hubble/static/media/homeDailyOne.03168638.jpg",
+    "static/media/homeDailyThree.1d27643f.jpg": "/hubble/static/media/homeDailyThree.1d27643f.jpg",
+    "static/media/homeDailyTwo.ad6a04f2.jpg": "/hubble/static/media/homeDailyTwo.ad6a04f2.jpg",
+    "static/media/homeMarsOne.b1fb1712.jpg": "/hubble/static/media/homeMarsOne.b1fb1712.jpg",
+    "static/media/homeMarsThree.6b58233c.jpg": "/hubble/static/media/homeMarsThree.6b58233c.jpg",
+    "static/media/homeMarsTwo.93a51d69.jpg": "/hubble/static/media/homeMarsTwo.93a51d69.jpg",
+    "static/media/homeNaturalOne.0a4beae3.jpg": "/hubble/static/media/homeNaturalOne.0a4beae3.jpg",
+    "static/media/homeNaturalThree.9cd9408f.webp": "/hubble/static/media/homeNaturalThree.9cd9408f.webp",
+    "static/media/homeNaturalTwo.e610b564.jpg": "/hubble/static/media/homeNaturalTwo.e610b564.jpg",
     "static/media/homeTitleBackground.25458bce.png": "/hubble/static/media/homeTitleBackground.25458bce.png",
     "static/media/jumboDaily.f736dacb.jpg": "/hubble/static/media/jumboDaily.f736dacb.jpg",
-    "static/media/jumboHome.6b070565.png": "/hubble/static/media/jumboHome.6b070565.png",
+    "static/media/jumboHome.d9bf65a1.png": "/hubble/static/media/jumboHome.d9bf65a1.png",
     "static/media/jumboMars.ab00f607.png": "/hubble/static/media/jumboMars.ab00f607.png",
     "static/media/jumboNaturalEvents.6849cde2.jpg": "/hubble/static/media/jumboNaturalEvents.6849cde2.jpg",
     "static/media/purpleBackground.fc3c16da.jpg": "/hubble/static/media/purpleBackground.fc3c16da.jpg",
@@ -33,6 +39,6 @@
     "static/js/runtime-main.d985f3eb.js",
     "static/css/2.67243139.chunk.css",
     "static/js/2.b641b33f.chunk.js",
-    "static/js/main.b9645c16.chunk.js"
+    "static/js/main.fae7ea53.chunk.js"
   ]
 }
