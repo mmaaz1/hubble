@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/hubble/static/js/main.fae7ea53.chunk.js",
-    "main.js.map": "/hubble/static/js/main.fae7ea53.chunk.js.map",
+    "main.js": "/hubble/static/js/main.e35b24fc.chunk.js",
+    "main.js.map": "/hubble/static/js/main.e35b24fc.chunk.js.map",
     "runtime-main.js": "/hubble/static/js/runtime-main.d985f3eb.js",
     "runtime-main.js.map": "/hubble/static/js/runtime-main.d985f3eb.js.map",
     "static/css/2.67243139.chunk.css": "/hubble/static/css/2.67243139.chunk.css",
@@ -39,6 +39,6 @@
     "static/js/runtime-main.d985f3eb.js",
     "static/css/2.67243139.chunk.css",
     "static/js/2.b641b33f.chunk.js",
-    "static/js/main.fae7ea53.chunk.js"
+    "static/js/main.e35b24fc.chunk.js"
   ]
 }
