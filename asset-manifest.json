@@ -1,21 +1,22 @@
 {
   "files": {
-    "main.js": "/hubble/static/js/main.3f904b3b.chunk.js",
-    "main.js.map": "/hubble/static/js/main.3f904b3b.chunk.js.map",
+    "main.js": "/hubble/static/js/main.246b31ca.chunk.js",
+    "main.js.map": "/hubble/static/js/main.246b31ca.chunk.js.map",
     "runtime-main.js": "/hubble/static/js/runtime-main.d985f3eb.js",
     "runtime-main.js.map": "/hubble/static/js/runtime-main.d985f3eb.js.map",
     "static/css/2.67243139.chunk.css": "/hubble/static/css/2.67243139.chunk.css",
-    "static/js/2.2eb142d5.chunk.js": "/hubble/static/js/2.2eb142d5.chunk.js",
-    "static/js/2.2eb142d5.chunk.js.map": "/hubble/static/js/2.2eb142d5.chunk.js.map",
+    "static/js/2.9adfa295.chunk.js": "/hubble/static/js/2.9adfa295.chunk.js",
+    "static/js/2.9adfa295.chunk.js.map": "/hubble/static/js/2.9adfa295.chunk.js.map",
     "index.html": "/hubble/index.html",
     "static/css/2.67243139.chunk.css.map": "/hubble/static/css/2.67243139.chunk.css.map",
-    "static/js/2.2eb142d5.chunk.js.LICENSE.txt": "/hubble/static/js/2.2eb142d5.chunk.js.LICENSE.txt",
+    "static/js/2.9adfa295.chunk.js.LICENSE.txt": "/hubble/static/js/2.9adfa295.chunk.js.LICENSE.txt",
     "static/media/Curiosity.a2164041.jpg": "/hubble/static/media/Curiosity.a2164041.jpg",
     "static/media/Error.c3180f5b.png": "/hubble/static/media/Error.c3180f5b.png",
     "static/media/ErrorMars.cc98dbf9.png": "/hubble/static/media/ErrorMars.cc98dbf9.png",
     "static/media/backgroundMars.9fe0fe85.jpg": "/hubble/static/media/backgroundMars.9fe0fe85.jpg",
     "static/media/blackBackground.ca95b0b7.jpg": "/hubble/static/media/blackBackground.ca95b0b7.jpg",
     "static/media/brownBackground.27328613.jpg": "/hubble/static/media/brownBackground.27328613.jpg",
+    "static/media/emptyMarsImage.06d498d4.jpg": "/hubble/static/media/emptyMarsImage.06d498d4.jpg",
     "static/media/greenBackground.510d04c2.jpg": "/hubble/static/media/greenBackground.510d04c2.jpg",
     "static/media/homeDailyOne.03168638.jpg": "/hubble/static/media/homeDailyOne.03168638.jpg",
     "static/media/homeDailyThree.1d27643f.jpg": "/hubble/static/media/homeDailyThree.1d27643f.jpg",
@@ -37,7 +38,7 @@
   "entrypoints": [
     "static/js/runtime-main.d985f3eb.js",
     "static/css/2.67243139.chunk.css",
-    "static/js/2.2eb142d5.chunk.js",
-    "static/js/main.3f904b3b.chunk.js"
+    "static/js/2.9adfa295.chunk.js",
+    "static/js/main.246b31ca.chunk.js"
   ]
 }
