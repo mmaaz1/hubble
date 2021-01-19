@@ -1,49 +1,59 @@
-import React,{useCallback} from 'react';
-import {Card, Button, Container, Col, Row} from 'react-bootstrap';
+import React from 'react';
+import {Card, Button, Col, Row} from 'react-bootstrap';
 import {Component} from 'react';
 import styled from 'styled-components';
-import BackgroundMars from './assets/backgroundMars.jpg';
+import BackgroundMars from './assets/backgroundMars.png';
 import Gallery from "react-photo-gallery";
-import EmptyMarsImage from "./assets/brownBackground.jpg";
+import EmptyMarsImage from "./assets/emptyMarsImage.jpg";
 import Error from "./assets/ErrorMars.png";
 import Curiosity from "./assets/Curiosity.jpg";
 import jumboNaturalEvents from './assets/jumboMars.png';
 import backgroundNaturalEvents from './assets/brownBackground.jpg';
 import Loading from './assets/Loading.png';
+import Particles from "react-particles-js";
 
 const Styles = styled.div`
-  padding:0;
-  border:0;
-  position:relative;
 
   .weatherContainer {
-    background: url(${BackgroundMars}) no-repeat;
-    background-size: cover;
-    bottom:0px;
-    margin-bottom:30px;
-    min-width: 100%;
-    max-width:100%;
-    max-height:100%;
-    min-height:100%;
-  }
-  .curiosityImage{
     position:relative;
     margin:auto;
-    display: block;
-    height: 550px;
-    width: 700px;
+    background: url(${BackgroundMars}) no-repeat;
+    background-size: cover;
+    padding-bottom:10px;
+    margin-bottom:20px;
+  }
+  .backgroundContainer{
+    width:100%;
+    height: 100%;
+    background: rgb(29, 11, 0);
+    position: absolute;
+  }
+  .curiosityContainer {
+       position: relative;
+       margin: auto;
+       overflow: hidden;
+       background-color:rgba(255, 255, 255,0.05);
+       margin-top:10px;
+       background-size:cover;
+       border: 10px solid rgba(255, 230, 234,0.06);
+       background-size:cover;
+  }
+  .curiosityImage{
+    position: relative;
+    margin: auto;
+    margin-bottom: 25px;
+    padding-top:15px;
+    height:auto;
+    width:100%;
   }
   .weatherImage {
-  display: block;
+     display: block;
 
-  max-height:300px;
-  max-width:300px;
+     max-height:300px;
+     max-width:300px;
 
-  margin-left:auto;
-  margin-right:auto;
-  margin-bottom:auto;
-  margin-top:15px;
-
+     margin:auto;
+     margin-top:15px;
   }
   .titleText {
     position: relative;
@@ -67,50 +77,52 @@ const Styles = styled.div`
     font-size: 8px;
     font-style: italic;
   }
-  .marsImage{
-    margin-left: 125px;
-    margin-right: 125px;
-  }
- .imgContainer {
-   position: relative;
-   margin: auto;
-   margin-bottom: 25px;
-   overflow: hidden;
- }
  .leftText{
     position: relative;
     text-align:right;
     margin:auto;
-    font-size:45px;
+    font-size:31px;
+    font-weight:600;
     color:#A9A9A9;
  }
+.backgroundContainer{
+   width:100%;
+   height: 100%;
+   position: absolute;
+}
  .rightText{
     position: relative;
     text-align:left;
     margin:auto;
     margin-top:7px;
-    font-size:40px;
-    color:#A9A9A9;
-    font-weight:200;
+    font-size:18px;
+    color:#DDDDDD;
+    font-weight:400;
  }
 `;
 const StyledCol = styled(Col)`
   position:relative;
-  margin:0;
+  margin:auto;
+  overflow: hidden;
+`;
+const StyledRow = styled(Row)`
+  position:relative;
+  padding:0px;
+  margin:auto;
 `;
 const StyledCard = styled(Card)`
   position:relative;
-  width:${props => (((props.windowWidth/6))+"px")};
+  width:${props => (((props.windowwidth/6))+"px")};
   background: rgba(0, 0, 0, 0.3);
   border-width: 0px;
   color:rgb(255,245,238);
   margin-top:10px;
   text-align:center;
-  padding-bottom:px;
+  border-radius:100px;
 `;
 const TitleCol = styled(Col)`
   position:relative;
-  margin:0;
+  margin:auto;
   text-align:center;
   margin-top:15px;
   margin-bottom:0px;
@@ -123,7 +135,8 @@ const TextCol = styled(Col)`
 const RoverHelpButton = styled(Button)`
    position: relative;
    margin:auto;
-   margin-left:0px;
+   margin-top:17px;
+   margin-left:5px;
    color:#A9A9A9;
    padding:0px;
    padding-left:5px;
@@ -131,6 +144,7 @@ const RoverHelpButton = styled(Button)`
    background-color:#000000;
    font-size:10px;
    font-weight:200;
+   transition:all 0.2s ease;
 `;
 
 
@@ -156,6 +170,7 @@ class Mars extends Component{
   }
 
   async componentDidMount() {
+    await window.scrollTo(0, 0);
     await this.updateWindowDimensions();
     await window.addEventListener('resize', this.updateWindowDimensions);
     let jumboHeader = "The Red Planet";
@@ -189,6 +204,7 @@ class Mars extends Component{
       dataCamera : this.dataCamera,
       totalPhotoNum : this.totalPhotoNum,
       totalPhotosTaken: this.totalPhotosTaken,
+      empty: false,
     });
     this.initializePhotos();
   }
@@ -229,11 +245,14 @@ class Mars extends Component{
            uniqueReturn.push(<br style={{marginBottom:"12px"}}/>);
            uniqueReturn.push(<span className="cardCount">{"Counted " + apiData.PRE.ct + " times"}</span>);
          }else if(cardName==="Wind Direction"){
+           console.log(apiData.WD);
            uniqueReturn.push(<span className="cardAverage">{apiData.WD.most_common.compass_degrees.toFixed(1) + "°"}</span>);
            uniqueReturn.push(<br  style={{marginBottom:"18px"}}/>);
            let firstDirection = this.checkDirection(apiData.WD.most_common.compass_point[0]);
            let secondDirection = this.checkDirection(apiData.WD.most_common.compass_point[1]);
-           let thirdDirection = this.checkDirection(apiData.WD.most_common.compass_point[2]);
+           let thirdDirection = "";
+           if(apiData.WD.most_common.compass_point.length === 3)
+             thirdDirection = this.checkDirection(apiData.WD.most_common.compass_point[2]);
            uniqueReturn.push(firstDirection + "-" + secondDirection + thirdDirection.toLowerCase());
            uniqueReturn.push(<br/>);
            uniqueReturn.push(<br style={{marginBottom:"12px"}}/>);
@@ -247,17 +266,17 @@ class Mars extends Component{
          }
       }
       catch(Exception){
-        uniqueReturn.push(<span className="cardAverage">{(apiData==0) ? "Loading": "N/A"}</span>);
+        uniqueReturn.push(<span className="cardAverage">{(apiData===0) ? "Loading": "N/A"}</span>);
         uniqueReturn.push(<br  style={{marginBottom:"18px"}}/>);
-        uniqueReturn.push("Min: " + ((apiData==0) ? "Loading": "N/A"));
+        uniqueReturn.push("Min: " + ((apiData===0) ? "Loading": "N/A"));
         uniqueReturn.push(<br/>);
-        uniqueReturn.push("Max: " + ((apiData==0) ? "Loading": "N/A"));
+        uniqueReturn.push("Max: " + ((apiData===0) ? "Loading": "N/A"));
         uniqueReturn.push(<br style={{marginBottom:"12px"}}/>);
-        uniqueReturn.push(<span className="cardCount">{"Counted: " + ((apiData==0) ? "Loading": "N/A")}</span>);
+        uniqueReturn.push(<span className="cardCount">{"Counted: " + ((apiData===0) ? "Loading": "N/A")}</span>);
       }
 
       let returnedValue =
-        <StyledCol><StyledCard windowWidth = {this.state.width}><Card.Body>
+        <StyledCol><StyledCard windowwidth = {this.state.width}><Card.Body>
           <span className="cardType">
             {cardName}
           </span>
@@ -282,9 +301,11 @@ class Mars extends Component{
       let returnedObject = [];
       let currRowNum = 0;
       let currRowElement = 0;
+      let counter=0;
 
       for(let i = 0; i < 7; i++){
-         if(this.state.totalPhotoNum[i] != 0){
+         if(this.state.totalPhotoNum[i] !== 0){
+            counter++;
             if(currRowNum === rowNum){
                returnedObject.push(
                   <TitleCol>
@@ -300,13 +321,14 @@ class Mars extends Component{
                currRowElement++;
          }
       }
-      if((this.state.galleryImage[rowNum][this.state.galleryImage[rowNum].length-1] !== undefined) && (this.state.galleryImage[rowNum][this.state.galleryImage[rowNum].length-1].src === EmptyMarsImage)){
+      console.log(counter);
+      if((this.state.empty === true) && (((rowNum+1)*2) >= counter))
          returnedObject.push(
             <TitleCol>
-               <h1 className="titleText"></h1>
+               <h1 className="titleText">{" "}</h1>
             </TitleCol>
          );
-      }
+
       return returnedObject;
    }
 
@@ -316,7 +338,7 @@ class Mars extends Component{
     for(let i = 0; i < this.state.galleryImage.length; i++){
       for(let j = 0; j < this.state.galleryImage[i].length; j++){
         try{
-          while(this.state.totalPhotoNum[2*i+j+offset] == 0)
+          while(this.state.totalPhotoNum[2*i+j+offset] === 0)
             offset++;
           if(object.photo === this.state.galleryImage[i][j]){
             if(this.state.totalPhotoNum[i*2+j+offset] === (this.state.currPhotoNum[i*2+j+offset] + 1))
@@ -337,7 +359,7 @@ class Mars extends Component{
     try{
       let tempImage = [];
       for(let i = 0; i < 7; i++){
-        if(this.state.totalPhotoNum[i] != 0)
+        if(this.state.totalPhotoNum[i] !== 0)
           tempImage.push({src:this.state.dataCamera[i].photos[this.state.currPhotoNum[i]].img_src,width:1,height:1,alt:this.state.cameraArray[i]});
       }
       this.galleryImage = [[],[],[],[]];
@@ -345,8 +367,10 @@ class Mars extends Component{
         this.galleryImage[Math.floor(i/2)].push(tempImage[i]);
       }
       for(let i=0; i<this.galleryImage.length; i++){
-         if(this.galleryImage[i].length == 1 )
+         if(this.galleryImage[i].length === 1 ){
            this.galleryImage[i].push({src:EmptyMarsImage,width:1,height:1});
+           await this.setState({empty: true});
+         }
       }
       await this.setState({galleryImage : this.galleryImage});
     }
@@ -357,87 +381,121 @@ class Mars extends Component{
 
   render(){
     return(
-      <Styles>
-        <Container fluid>
-           <div className="weatherContainer">
-              <Row>
-                  {this.weatherCard("Temperature")}
-                  {this.weatherCard("Wind Speed")}
-                  {this.weatherCard("Atmospheric Pressure")}
-                  {this.weatherCard("Wind Direction")}
-                  {this.weatherCard("Season")}
-              </Row>
-           </div>
-           <div className="curiosityInfo">
-              <Row>
-                 <Col>
-                    <Row>
-                       <TextCol lg={5}>
-                          <h1 className="leftText"> {"Name: "} </h1>
-                       </TextCol>
-                       <TextCol lg={7}>
-                          <h1 className="rightText"> {"Curiosity"} </h1>
-                       </TextCol>
-                       <TextCol lg={5}>
-                          <h1 className="leftText"> {"Landing Date: "} </h1>
-                       </TextCol>
-                       <TextCol lg={7}>
-                          <h1 className="rightText"> 6<sup>th</sup> August, 2012 </h1>
-                       </TextCol>
-                       <TextCol lg={5}>
-                          <h1 className="leftText"> {"Status: "} </h1>
-                       </TextCol>
-                       <TextCol lg={7}>
-                          <h1 className="rightText"> {"Active"} </h1>
-                       </TextCol>
-                       <TextCol lg={5}>
-                          <h1 className="leftText"> {"Photos Taken: "} </h1>
-                       </TextCol>
-                       <TextCol lg={7}>
-                          <h1 className="rightText"> {this.state.totalPhotosTaken} </h1>
-                       </TextCol>
-                       <TextCol lg={5}>
-                          <h1 className="leftText"> {"Objectives: "} </h1>
-                       </TextCol>
-                       <TextCol lg={7}>
-                          <h1 className="rightText" style={{fontSize:"30px"}}> {"-Investigation of the Martian climate and geology"} </h1>
-                          <h1 className="rightText" style={{fontSize:"30px"}}> {"-Assessment of whether Mars has ever offered environmental conditions favorable for microbial life"} </h1>
-                          <h1 className="rightText" style={{fontSize:"30px"}}> {"-Planetary habitability studies in preparation for human exploration."} </h1>
-                       </TextCol>
-                    </Row>
-                 </Col>
-                 <Col>
-                    <div className="imgContainer">
-                        <img className="curiosityImage" src={Curiosity} alt={"TEMPORARY"}/>
-                    </div>
-                 </Col>
-              </Row>
-           </div>
-           <div>
-           <Row style={{ marginBottom:"50px", marginTop:"40px"}}>
-              <h1 className={"leftText"}style={{marginLeft:"75px", marginRight:"0px", textAlign:"left", textDecoration:"underline"}}> {"Photos Taken by Curiosity"} </h1>
-              <RoverHelpButton onClick={() => this.setState({roverHelpButtonClicked:!this.state.roverHelpButtonClicked})}> {this.state.roverHelpButtonClicked ? "Click on the images to traverse through them" : "?"} </RoverHelpButton>
-           </Row>
-           </div>
-           <div className = "marsImage">
-             <Row>
-               {this.printHeaders(0)}
-             </Row>
-             <Gallery onClick={this.handleClickPic} margin={7} photos={(this.state.galleryImage[0].length!=0) ? this.state.galleryImage[0] : [{src: Error, width: 1, height: 1}]}/>
-             <Row>
-               {this.printHeaders(1)}
-             </Row>
-             <Gallery onClick={this.handleClickPic} margin={7} photos={this.state.galleryImage[1]}/>
-             <Row>
-               {this.printHeaders(2)}
-             </Row>
-             <Gallery onClick={this.handleClickPic} margin={7} photos={this.state.galleryImage[2]}/>
-             <Row style={{marginBottom:"50px"}}>
-               {this.printHeaders(3)}
-             </Row>
-             <Gallery onClick={this.handleClickPic} margin={7} photos={this.state.galleryImage[3]}/>
-           </div>
-        </Container>
+      <Styles style={{position:"relative", margin:"auto", paddingBottom:"50px"}} fluid>
+         <Particles className="backgroundContainer" params={{
+             "particles": {
+                  "number": {
+                      "value": 200,
+                  },
+                 "color": {
+                   "value": "#FFFFFF"
+                 },
+                  "line_linked": {
+                      "enable": true,
+                      "opacity": 0.01
+                  },
+                  "move": {
+                      "speed": 0.15
+                  },
+                  "size": {
+                      "value": 0.4
+                  },
+                  "opacity": {
+                      "anim": {
+                          "enable": false,
+                          "speed": 0.5,
+                          "opacity_min": 0.25
+                      }
+                  }
+             },
+             "retina_detect": true
+         }}/>
+        <div className="weatherContainer">
+           <StyledRow>
+               {this.weatherCard("Temperature")}
+               {this.weatherCard("Wind Speed")}
+               {this.weatherCard("Atmospheric Pressure")}
+               {this.weatherCard("Wind Direction")}
+               {this.weatherCard("Season")}
+           </StyledRow>
+        </div>
+        <StyledCol xl={2} lg={1} md={1} sm={0} xs={0}></StyledCol>
+        <StyledCol xl={9} lg={10} md={10} sm={12} xs={12}>
+          <div className="curiosityContainer">
+             <StyledRow>
+                   <StyledCol lg={6} style={{padding:"0px"}}>
+                      <StyledRow>
+                         <TextCol lg={5}>
+                            <h1 className="leftText"> {"Name: "} </h1>
+                         </TextCol>
+                         <TextCol lg={7}>
+                            <h1 className="rightText"> {"Curiosity"} </h1>
+                         </TextCol>
+                         <TextCol lg={5}>
+                            <h1 className="leftText"> {"Landing Date: "} </h1>
+                         </TextCol>
+                         <TextCol lg={7}>
+                            <h1 className="rightText"> 6<sup>th</sup> August, 2012 </h1>
+                         </TextCol>
+                         <TextCol lg={5}>
+                            <h1 className="leftText"> {"Status: "} </h1>
+                         </TextCol>
+                         <TextCol lg={7}>
+                            <h1 className="rightText"> {"Active"} </h1>
+                         </TextCol>
+                         <TextCol lg={5}>
+                            <h1 className="leftText"> {"Photos Taken: "} </h1>
+                         </TextCol>
+                         <TextCol lg={7}>
+                            <h1 className="rightText"> {this.state.totalPhotosTaken} </h1>
+                         </TextCol>
+                         <TextCol lg={5}>
+                            <h1 className="leftText"> {"Objectives: "} </h1>
+                         </TextCol>
+                         <TextCol lg={7}>
+                            <h1 className="rightText"> {"-Investigation of the Martian climate and geology"} </h1>
+                            <h1 className="rightText"> {"-Assessment of whether Mars has ever offered environmental conditions favorable for microbial life"} </h1>
+                            <h1 className="rightText"> {"-Planetary habitability studies in preparation for human exploration."} </h1>
+                         </TextCol>
+                      </StyledRow>
+                   </StyledCol>
+                   <StyledCol lg={6}>
+                       <img className="curiosityImage" src={Curiosity} alt={"TEMPORARY"}/>
+                   </StyledCol>
+             </StyledRow>
+          </div>
+           <StyledRow style={{marginBottom:"50px", marginTop:"40px"}}>
+              <h1 style={{
+                 marginLeft:"5%",
+                 fontSize:"31px",
+                 fontWeight:"600",
+                 color:"#A9A9A9",
+                 textAlign:"left",
+                 fontSize:"50px",
+                 fontWeight:"650"
+              }}> {"Photos Taken by Curiosity"} </h1>
+              <RoverHelpButton onMouseOver={() => this.setState({roverHelpButtonClicked:true})} onMouseOut={() => this.setState({roverHelpButtonClicked:false})}> {this.state.roverHelpButtonClicked ? "Click on the images to traverse through them" : "?"} </RoverHelpButton>
+           </StyledRow>
+
+           <StyledRow>
+             {this.printHeaders(0)}
+           </StyledRow>
+           <Gallery onClick={this.handleClickPic} margin={7} photos={(this.state.galleryImage[0].length!==0) ? this.state.galleryImage[0] : [{src: Error, width: 1, height: 1}]}/>
+           <StyledRow>
+             {this.printHeaders(1)}
+           </StyledRow>
+           <Gallery onClick={this.handleClickPic} margin={7} photos={this.state.galleryImage[1]}/>
+           <StyledRow>
+             {this.printHeaders(2)}
+           </StyledRow>
+           <Gallery onClick={this.handleClickPic} margin={7} photos={this.state.galleryImage[2]}/>
+           <StyledRow>
+             {this.printHeaders(3)}
+           </StyledRow>
+           <Gallery onClick={this.handleClickPic} margin={7} photos={this.state.galleryImage[3]}/>
+        </StyledCol>
+        <StyledCol xl={2} lg={1} md={1} sm={0} xs={0}>
+        </StyledCol>
       </Styles>
     );
   }

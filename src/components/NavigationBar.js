@@ -1,20 +1,15 @@
 import React, { Component }  from 'react';
 import {Link} from 'react-router-dom';
-import {Nav, Navbar, Col, Row} from 'react-bootstrap';
+import {Nav, Navbar, Row} from 'react-bootstrap';
 import styled from 'styled-components';
-import HubbleLogo from '../assets/hubbleLogo.png';
+import HubbleLogo from '../assets/navLogo.png';
 
 const Styles = styled.div`
   .navbar {
     background-color: #222;
   }
   .navButton{
-    color: #bbb;
     margin-right: 20px;
-
-    &:hover{
-      color: white;
-    }
   }
   .titleText {
     color: #FFFFF2;
@@ -22,9 +17,13 @@ const Styles = styled.div`
     margin-left:5px;
     margin-bottom:0px;
     margin-top:4px;
+     &:hover{
+       color: grey;}
   }
   .navText {
     color: #FFFFF2;
+    &:hover{
+      color: grey;
   }
 `;
 
@@ -47,23 +46,23 @@ class NavigationBar extends Component{
                 <Navbar.Collapse id="basic-navbar-nav">
                   <Nav className="ml-auto">
                     <Nav.Item>
-                      <Nav.Link>
-                        <Link className="navButton" to="/hubble"> <span className="navText"> Home </span> </Link>
+                      <Nav.Link as={Link} className="navButton" to="/hubble">
+                        <span className="navText"> Home </span>
                       </Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                      <Nav.Link>
-                        <Link className="navButton" to="/hubble/dailypic"> <span className="navText"> Daily Pic </span> </Link>
+                      <Nav.Link as={Link} className="navButton" to="/hubble/dailypic">
+                        <span className="navText"> Daily Pic </span>
                       </Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                      <Nav.Link>
-                        <Link className="navButton" to="/hubble/mars"> <span className="navText"> Mars </span> </Link>
+                      <Nav.Link as={Link} className="navButton" to="/hubble/mars">
+                        <span className="navText"> Mars </span>
                       </Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                      <Nav.Link>
-                        <Link className="navButton" to="/hubble/naturalevents"> <span className="navText"> Natural Events </span> </Link>
+                      <Nav.Link as={Link} className="navButton" to="/hubble/naturalevents">
+                        <span className="navText"> Natural Events </span>
                       </Nav.Link>
                     </Nav.Item>
                   </Nav>

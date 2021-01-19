@@ -8,12 +8,11 @@ import DailyPic from './DailyPic';
 import NoMatch from './NoMatch';
 import NaturalEvents from './NaturalEvents';
 
-import Layout from './components/Layout';
 import NavigationBar from './components/NavigationBar';
 import Jumbotron from './components/Jumbotron';
 
 import homeBackground from './assets/blackBackground.jpg';
-import jumboBackground from './assets/jumboHome.jpg';
+import jumboBackground from './assets/jumboHome.png';
 
 const Styles = styled.div`
   .websiteBackground{
