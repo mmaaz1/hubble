@@ -135,6 +135,9 @@ const StyledCardHeader = styled(Card.Header)`
 `;
 const StyledSlider = styled(Slider)`
    margin-bottom:5px;
+   .slick-dots li button:before {
+    color: #FFFFFF;
+  }
 `;
 const StyledCol = styled(Col)`
   position:relative;
